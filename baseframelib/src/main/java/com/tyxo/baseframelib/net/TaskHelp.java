@@ -16,8 +16,11 @@ import java.util.Map;
 /**
  * Created by LY on 2016/8/11 14: 07.
  * Mail      1577441454@qq.com
- * Describe : 用法:
- *              0.new TaskHelpNew --> task  (否则userName,orgId放不进去)
+ * Describe :
+ */
+/*
+        用法:
+ *              0.new TaskHelpNew -- task  (否则userName,orgId放不进去)
  *              1.new VolleyCallBack<JSONObject>()...;
  *              2.task.方法...;
  */

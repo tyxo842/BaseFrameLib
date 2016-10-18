@@ -43,5 +43,15 @@ publish {
     artifactId = 'baseframelib'//项目名称
     publishVersion = '1.0.0'//版本号
     desc = '初次开发的库,还在调试中,基类框架,目前只支持swipeRefreshLayout + recyclerView'//描述，不重要
-    website = 'https://github.com/tyxo842/MobileSafe'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    website = 'https://github.com/tyxo842/BaseFrameLib'//网站，不重要
+}
+
+allprojects {
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
 }

@@ -29,7 +29,10 @@ import java.lang.reflect.Type;
 /**
  * Created by tyxo on 2016/8/25 10: 38.
  * Mail      1577441454@qq.com
- * Describe : <T> 限定数据 bean 的类型,
+ * Describe :
+ */
+/*
+<T> 限定数据 bean 的类型,
  *            子类使用的时候: public class GirlsActivity extends BaseRecyclerActivity<BeanGirls>{....}.
  *            参考 GirlsActivity 代码:
  *            重写 requestNet ,task.网络请求.

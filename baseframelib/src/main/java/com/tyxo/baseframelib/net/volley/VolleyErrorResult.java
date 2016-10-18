@@ -1,7 +1,7 @@
 package com.tyxo.baseframelib.net.volley;
 /**
  *  Volley Error Result： Volley 错误结果
- * @Classname VolleyNetworkManager
+ * Classname VolleyNetworkManager
  */
 public class VolleyErrorResult {
 

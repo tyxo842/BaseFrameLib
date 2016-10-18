@@ -12,13 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* @author tyxo
-* @created at 2016/8/25 16:11
-* @des : recyclerView 的基类adapter
- *       用法:
+* author tyxo
+* created at 2016/8/25 16:11
+* des : recyclerView 的基类adapter
+*/
+/*
+用法:
  *        class GAdapter extends BaseRecyclerAdapter <MyHolder,NewslistBean>{...}
  *        参考 GAdaper 内的adapter用法.
-*/
+ */
 public abstract class BaseRecyclerAdapter<T extends RecyclerView.ViewHolder,E> extends
         RecyclerView.Adapter<T> {
 

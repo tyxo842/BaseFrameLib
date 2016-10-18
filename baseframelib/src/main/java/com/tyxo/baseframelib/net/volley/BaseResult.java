@@ -2,8 +2,8 @@ package com.tyxo.baseframelib.net.volley;
 
 /**
  * 
- * @ClassName: BaseResult 
- * @Description: Volley请求类的返回结果
+ * ClassName: BaseResult
+ * Description: Volley请求类的返回结果
  *
  */
 public class BaseResult{

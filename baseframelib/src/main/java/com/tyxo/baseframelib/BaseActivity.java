@@ -11,9 +11,9 @@ import android.view.MenuItem;
 import java.lang.reflect.Method;
 
 /**
-* @author tyxo
-* @created at 2016/10/10 16:14
-* @des :
+* author tyxo
+* created at 2016/10/10 16:14
+* des :
 */
 public abstract class BaseActivity extends AppCompatActivity {
 

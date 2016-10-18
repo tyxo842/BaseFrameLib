@@ -462,7 +462,7 @@ public class VolleyManager {
      *
      * @param error volley 错误
      * @return
-     * @info 错误状态说明见:
+     * info 错误状态说明见:
      * http://www.cnblogs.com/lds85930/archive/2009/06/21/1507756.html
      */
     protected VolleyErrorResult getErrorResult(VolleyError error) {
