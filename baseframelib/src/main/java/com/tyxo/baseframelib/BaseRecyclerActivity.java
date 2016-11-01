@@ -153,7 +153,7 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
         }*/
 
 
-    /** 网络请求 */
+    /** 网络请求 重写此方法,然后可参考继承TaskHelp,发起网络请求*/
     protected void requestNet(){
 
         callback =  new VolleyCallBack<JSONObject>() {
