@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!--实现图片的重叠-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque"><!--为了防止在启动的时候出现背景闪烁-->
+
+    <item android:drawable="@android:color/darker_gray" />
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/ic_launcher" />
+    </item>
+
+</layer-list>
+
+<!--将此文件设置成activity的style
+    <style>
+        <item name="android:windowBackgroud">@drawable/start_windo</item>
+    </style>
+
+-->

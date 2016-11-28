@@ -26,25 +26,43 @@ README
 啥也不说,先上依赖,在dependencies内添加依赖地址:
 ```
     dependencies {
-        compile 'com.tyxo842:baseframelib:1.0.0
+        compile 'com.tyxo:baseframelib:1.0.0'
     }
 ```
 ####用途
 ```
-    这个库,为了实现baseActivity而创建,包含volley网络请求框架封装以及泛型解析.使用的时候,自己的类MyActivity
+    这个库,为了实现baseActivity而创建,包含volley网络请求框架封装以及泛型解析.使用的时候,自己的类MyActivity继承BaseRecyclerActivity<实体bean>,
+    然后重写三个方法,第一个setIds(这里面设置的界面布局,刷新控件swipeRefreshLayout和recyclerView),第二个requestNet(网络请求),第三个handleData(
+    数据处理)
+    例如:
+        //首先设置id
+        @Override
+        protected void setIds() {
+            this.setLayoutId(R.layout.activity_test_baseframe);//设置布局文件
+            this.setRefreshLId(R.id.swipRefreshL);//设置刷新控件swipeRefreshLayout
+            this.setRecyclerVId(R.id.recyclerView);//设置recyclerView
+        }
+    
+        //处理返回数据
+        @Override
+        protected void handleData(TestBean beanB) {
+            Log.v("tyxo","TestBaseFrame handleDta ");
+        }
+    
+        @Override
+        protected void requestNet() {
+            super.requestNet();
+            //做网络请求操作
+        }
     
 ```
+
 ###文字高亮
 文字高亮功能能使行内部分文字高亮(也适合做一篇文章的tag)，使用一对反引号。语法：
 ```
 `linux` `网络编程` `socket` `Android`
 ```
 效果：`linux` `网络编程` `socket` `Android`
-
-####换行
-直接回车不能换行，
-可以在上一行文本后面补两个空格，
-这样下一行的文本就换行了。
 
 ####斜体、粗体、删除线
 |语法|效果|
@@ -59,7 +77,6 @@ README
 |`***~~斜粗体删除线1~~***`|***~~斜粗体删除线1~~***
 |`~~***斜粗体删除线2***~~`|~~***斜粗体删除线2***~~
 
-斜体、粗体、删除线可混合使用
 
 图片
 ------
@@ -109,13 +126,13 @@ https://github.com/tyxo842/MobileSafe/raw/master/MobileSafeApp/src/main/assets/p
 也可以在第一行指定`1. `，而接下来的几行用星号`*`（或者继续用数字1. ）就可以了，它会自动显示成2、3、4……。    
 面向对象的七大原则：
 
-1. 开闭原则
-* 里氏转换原则
-* 依赖倒转原则
-* 接口隔离原则
-* 组合/聚合复用原则
-* “迪米特”法则
-* 单一职责原则
+1. 开闭原则 , , , , , , , , , ,核心思想：对扩展开放，对修改关闭。
+* 里氏替换原则 , , , , , , 核心：在任何父类出现的地方都可以用他的子类来替代。
+* 依赖注入原则 , , , , , , 核心：要依赖于抽象，不要依赖于具体的实现。
+* 接口分离原则 , , , , , , 核心思想：不应该强迫客户程序依赖他们不需要使用的方法。
+* 组合/聚合复用原则 , , 核心思想：尽量使用对象组合，而不是继承来达到复用的目的。
+* “迪米特”法则 , , , , , , ,核心：一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。（类间解耦，低耦合）。
+* 单一职责原则 , , , , , , 核心：解耦和增强内聚性（高内聚，低耦合）。
 
 代码高亮
 ----------
@@ -132,11 +149,6 @@ document.getElementById("myH1").innerHTML="Welcome to my Homepage"; //javascipt
 表格
 --------
 
-表头1  | 表头2
---------- | --------
-表格单元  | 表格单元 
-表格单元  | 表格单元 
-
 ###对齐
 表格可以指定对齐方式
 
@@ -148,7 +160,6 @@ document.getElementById("myH1").innerHTML="Welcome to my Homepage"; //javascipt
 
 ###混合其他语法
 表格单元中的内容可以和其他大多数GFM语法配合使用，如：  
-####使用普通文本的删除线，斜体等效果
 
 | 名字 | 描述          |
 | ------------- | ----------- |

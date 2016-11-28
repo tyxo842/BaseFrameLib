@@ -2,6 +2,8 @@ package com.tyxo.baseframelib;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -78,6 +80,7 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
     protected VolleyCallBack<JSONObject> callback;
     private GridLayoutManager mLayoutManager;
     private int lastVisibleItem;
+    private MyHandler handler;
 
     protected boolean isRefresh = true;            //是否是下拉刷新
     protected boolean isLoadMore = false;         //是否是上拉加载
@@ -136,6 +139,7 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
 
     protected void initData() {
         pageSize = 10;
+        handler = new MyHandler();
 
         requestNet();
     }
@@ -182,31 +186,46 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
             }
         };
 
-        taskHelp = new TaskHelp();
+        //taskHelp = new TaskHelp();
     }
 
     private RecyclerView.OnScrollListener mScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
-            boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
+            // TODO: 2016/11/2 在基类中传adapter使用,需再看看,并加入判断!!
+            if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mAdapter.getItemCount()) {
+                mRefreshLayout.setRefreshing(true);
+
+                    /* 此处换成网络请求  上拉加载
+                    ......
+                    * */
+                Message msg = new Message();
+                msg.what = 0;
+                handler.sendMessageDelayed(msg, 1000);
+                Log.v("tyxo", "上拉加载");
+            }
+
+            /*boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
                     >= mLayoutManager.getItemCount() - 1;
-            //if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mAdapter.getItemCount()) {//下拉刷新
             if(newState == RecyclerView.SCROLL_STATE_IDLE && !isLoadMore && reachBottom) {
                 isLoadMore = true;
                 onLoadMore();
-            }
+            }*/
         }
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
-            //lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
-            boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
+            lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+
+
+
+            /*boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
                     >= mLayoutManager.getItemCount() - 1;
             if(!isLoadMore && reachBottom) {
                 onLoadMore();
-            }
+            }*/
         }
     };
 
@@ -217,6 +236,10 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
         rand = 0;
         isRefresh = true;
         isLoadMore = false;
+
+        Message msg = new Message();
+        msg.what = 1;
+        handler.sendMessageDelayed(msg, 1000);
     }
 
     // 加载更多
@@ -244,6 +267,23 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
         ParameterizedType p = (ParameterizedType) t;
         Class<T> c = (Class<T>) p.getActualTypeArguments()[0];
         return c;
+    }
+
+    private class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    mRefreshLayout.setRefreshing(false);
+                    break;
+                case 1:
+                    mRefreshLayout.setRefreshing(false);
+                    break;
+                case 2:
+                    break;
+            }
+        }
     }
 
     public int getLayoutId() {

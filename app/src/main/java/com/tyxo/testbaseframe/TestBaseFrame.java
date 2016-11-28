@@ -11,6 +11,8 @@ import com.tyxo.baseframelib.BaseRecyclerActivity;
  */
 
 public class TestBaseFrame extends BaseRecyclerActivity<TestBean> {
+
+    //首先设置id
     @Override
     protected void setIds() {
         this.setLayoutId(R.layout.activity_test_baseframe);
@@ -18,6 +20,7 @@ public class TestBaseFrame extends BaseRecyclerActivity<TestBean> {
         this.setRecyclerVId(R.id.recyclerView);
     }
 
+    //处理返回数据
     @Override
     protected void handleData(TestBean beanB) {
         Log.v("tyxo","TestBaseFrame handleDta ");
@@ -26,6 +29,6 @@ public class TestBaseFrame extends BaseRecyclerActivity<TestBean> {
     @Override
     protected void requestNet() {
         super.requestNet();
-        //taskHelp.orderModifyState();
+        //做网络请求操作
     }
 }
