@@ -1,10 +1,11 @@
 package com.tyxo.testbaseframe;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         text_baseframe = (TextView) findViewById(R.id.text_baseframe);
+
+
         text_baseframe.setOnClickListener(this);
     }
 

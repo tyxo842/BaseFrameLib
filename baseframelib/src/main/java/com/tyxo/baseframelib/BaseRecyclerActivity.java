@@ -39,7 +39,8 @@ import java.lang.reflect.Type;
  *            参考 GirlsActivity 代码:
  *            重写 requestNet ,task.网络请求.
  */
-public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
+public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatActivity implements
+         SwipeRefreshLayout.OnRefreshListener{
 
     /*
     public static <T> String arrayToString(ArrayList<T> list) {
@@ -194,38 +195,38 @@ public abstract class BaseRecyclerActivity<T extends Object> extends AppCompatAc
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
             // TODO: 2016/11/2 在基类中传adapter使用,需再看看,并加入判断!!
-            if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mAdapter.getItemCount()) {
+            /*if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mAdapter.getItemCount()) {
                 mRefreshLayout.setRefreshing(true);
 
-                    /* 此处换成网络请求  上拉加载
-                    ......
-                    * */
+                    // 此处换成网络请求  上拉加载
+                    //......
+
                 Message msg = new Message();
                 msg.what = 0;
                 handler.sendMessageDelayed(msg, 1000);
                 Log.v("tyxo", "上拉加载");
-            }
+            }*/
 
-            /*boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
+            boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
                     >= mLayoutManager.getItemCount() - 1;
             if(newState == RecyclerView.SCROLL_STATE_IDLE && !isLoadMore && reachBottom) {
                 isLoadMore = true;
                 onLoadMore();
-            }*/
+            }
         }
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
-            lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+            //lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
 
 
 
-            /*boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
+            boolean reachBottom = mLayoutManager.findLastCompletelyVisibleItemPosition()
                     >= mLayoutManager.getItemCount() - 1;
             if(!isLoadMore && reachBottom) {
                 onLoadMore();
-            }*/
+            }
         }
     };
 
