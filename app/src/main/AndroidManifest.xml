@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tyxo.testbaseframe" >
+    package="com.tyxo.testbaseframe">
 
     <!--启动手机飞行模式-->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TestBaseFrame"/>
+        <activity android:name=".TestBaseFrame" />
+        <activity
+            android:name=".TestStatusView"
+            android:theme="@style/NoBarTheme" />
     </application>
 
 </manifest>
