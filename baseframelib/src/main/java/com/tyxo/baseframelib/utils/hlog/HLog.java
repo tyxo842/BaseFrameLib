@@ -179,7 +179,9 @@ public class HLog {
         }
     }
 
-    /** 调试标记 */
+    /**
+     * 调试标记
+     */
     public static boolean getHardDebugFlag() {
         return HConfig.DEBUG;
     }
@@ -188,44 +190,46 @@ public class HLog {
 
     /**
      * 打印i级别的log
+     *
      * @param tag
      * @param msg
      */
-    public static void i1(String tag, String msg){
-        if(isDebug){
+    public static void i1(String tag, String msg) {
+        if (isDebug) {
             Log.i(tag, msg);
         }
     }
 
     /**
      * 打印i级别的log
-     * @param tag
+     *
      * @param msg
      */
-    public static void i1(Object object, String msg){
-        if(isDebug){
+    public static void i1(Object object, String msg) {
+        if (isDebug) {
             Log.i(object.getClass().getSimpleName(), msg);
         }
     }
 
     /**
      * 打印e级别的log
+     *
      * @param tag
      * @param msg
      */
-    public static void e1(String tag, String msg){
-        if(isDebug){
+    public static void e1(String tag, String msg) {
+        if (isDebug) {
             Log.e(tag, msg);
         }
     }
 
     /**
      * 打印e级别的log
-     * @param tag
+     *
      * @param msg
      */
-    public static void e1(Object object, String msg){
-        if(isDebug){
+    public static void e1(Object object, String msg) {
+        if (isDebug) {
             Log.e(object.getClass().getSimpleName(), msg);
         }
     }
